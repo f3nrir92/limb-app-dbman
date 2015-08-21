@@ -20,7 +20,7 @@ class MysqlDbDriver extends DbDriver
 	function _exec($dsn, $cmd)
 	{
 	  extract($dsn);
-	  $shell_cmd = $this->_connect_string($dsn) . ' -e"' . $cmd . '" -N -B ' . $database . ' 2>&1';
+	  $shell_cmd = $this->_connect_string($dsn) . ' -e"' . $cmd . '" -N -B ' . $database;// MySQL 5.6 Warning fix . ' 2>&1';
 	  exec($shell_cmd, $out, $ret);
 	  $outstr = trim(implode("\n", $out));
 
